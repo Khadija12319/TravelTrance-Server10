@@ -52,7 +52,13 @@ async function run() {
         const query={_id: new ObjectId(id)};
         const spot=await spotsdata.findOne(query);
         res.send(spot);
+    })
 
+    app.delete('/spots/:id',async(req,res)=>{
+        const id=req.params.id;
+        const query={_id: new ObjectId(id)};
+        const spot=await spotsdata.deleteOne(query);
+        res.send(spot);
     })
 
 
