@@ -24,7 +24,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    await client.connect();
+    //await client.connect();
 
     const spotsdata=client.db('assignment-10').collection('spots');
     const countrydata=client.db('assignment-10').collection('countries');
@@ -53,6 +53,14 @@ async function run() {
         const spot=await spotsdata.findOne(query);
         res.send(spot);
     })
+
+    // app.get('/spots/:country',async(req,res)=>{
+    //     const country=req.params.country;
+    //     const query={countryname: country};
+    //     const cursor = spotsdata.find(query);
+    //     const spot = await cursor.json();
+    //     res.send(spot);
+    // })
 
     app.put('/spots/:id',async(req,res)=>{
         const id=req.params.id;
